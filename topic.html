@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link href="icon.svg" rel="icon" />
+
+  <title>Corona Virus Research</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Load Cairo Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+    * {
+      font-family: 'Cairo', sans-serif;
+    }
+    /* Remove default margin and padding */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: auto; /* Enable scrolling */
+    }
+
+    /* Background Image */
+    body {
+      background-image: url('./bg.png'); /* Add your background image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* Green Theme */
+    h1 {
+      color: #27ae60; /* Lighter green for h1 */
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #2ecc71; /* Green color for headings */
+    }
+
+    p {
+      color: #ecf0f1; /* Light gray for text */
+      line-height: 1.6;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .topic, #page-title-box {
+      background-color: rgba(44, 44, 44, 0.8); /* Semi-transparent background */
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      margin-top: 20px;
+      width: 250px;
+      height: 50px;
+      background-color: #2ecc71; /* Green color for button */
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: white; /* Changes to white on hover */
+      color: #2ecc71; /* Text changes to green on hover */
+      border-radius: 50px 20px; /* Dynamic border radius on hover */
+    }
+
+    /* Translate Button */
+    #translate-btn {
+      position: absolute; /* Change from fixed to absolute */
+      top: 10px; /* Adjust top position */
+      right: 10px; /* Adjust right position */
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #2ecc71;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    #translate-btn:hover {
+      background-color: #27ae60; /* Darker green on hover */
+    }
+
+    /* Page Title Box */
+    #page-title-box {
+      position: relative; /* Add this to make the button position relative to this container */
+      background-color: rgba(44, 44, 44, 0.8); /* Semi-transparent background */
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      text-align: center; /* Center the title */
+    }
+
+    /* Arabic Styles */
+    body[dir="rtl"] {
+      direction: rtl;
+      font-family: 'Cairo', sans-serif; /* Apply Cairo font for Arabic */
+    }
+
+    body[dir="rtl"] .container {
+      text-align: right; /* Align text to the right for Arabic */
+    }
+
+    body[dir="rtl"] #translate-btn {
+      right: auto;
+      left: 10px; /* Move button to the left in RTL */
+    }
+
+    /* Modern Green Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1c1c1c;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2ecc71;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #27ae60;
+    }
+
+    /* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  #page-title-box {
+    padding: 1rem;
+  }
+
+  .topic {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  button {
+    width: 200px;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  #translate-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  #page-title-box {
+    padding: 0.8rem;
+  }
+
+  .topic {
+    padding: 0.8rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  button {
+    width: 180px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  #translate-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 0.8rem;
+  }
+
+  #page-title-box {
+    padding: 0.6rem;
+  }
+
+  .topic {
+    padding: 0.6rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+  }
+
+  button {
+    width: 160px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+
+  #translate-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    top: 5px;
+    right: 5px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Page Title Box -->
+    <div id="page-title-box">
+      <h1 id="page-title">Corona Virus Research</h1>
+      <button id="translate-btn" title="Change language">
+        <i class="fas fa-language"></i> <!-- Font Awesome language icon -->
+      </button>
+    </div>
+
+    <!-- Topic 1: What is Coronavirus? -->
+    <div class="topic">
+      <h2 id="topic1-title">What is Coronavirus?</h2>
+      <p id="topic1-content">
+        Coronavirus is a family of viruses that cause illnesses ranging from the common cold to more severe diseases like COVID-19. It was first identified in Wuhan, China, in December 2019.
+      </p>
+    </div>
+
+    <!-- Topic 2: Symptoms -->
+    <div class="topic">
+      <h2 id="topic2-title">Symptoms</h2>
+      <p id="topic2-content">
+        Common symptoms include fever, cough, and shortness of breath. In severe cases, it can lead to pneumonia, kidney failure, and even death.
+      </p>
+    </div>
+
+    <!-- Topic 3: Prevention -->
+    <div class="topic">
+      <h2 id="topic3-title">Prevention</h2>
+      <p id="topic3-content">
+        To prevent the spread of coronavirus, wash your hands frequently, wear a mask, maintain social distancing, and avoid large gatherings.
+      </p>
+    </div>
+
+    <!-- Topic 4: Vaccines -->
+    <div class="topic">
+      <h2 id="topic4-title">Vaccines</h2>
+      <p id="topic4-content">
+        Vaccines like Pfizer, Moderna, and AstraZeneca have been developed to combat COVID-19. They help build immunity and reduce the severity of the disease.
+      </p>
+    </div>
+
+    <!-- Topic 5: Impact on Society -->
+    <div class="topic">
+      <h2 id="topic5-title">Impact on Society</h2>
+      <p id="topic5-content">
+        The pandemic has caused significant disruptions to daily life, including school closures, remote work, and economic challenges.
+      </p>
+      <a href="index.html">
+        <button id="back-button">Back to Home</button>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Translation Script -->
+  <script>
+    const translateBtn = document.getElementById('translate-btn');
+    const pageTitle = document.getElementById('page-title');
+    const backButton = document.getElementById('back-button');
+
+    // Topic Titles and Content
+    const topic1Title = document.getElementById('topic1-title');
+    const topic1Content = document.getElementById('topic1-content');
+    const topic2Title = document.getElementById('topic2-title');
+    const topic2Content = document.getElementById('topic2-content');
+    const topic3Title = document.getElementById('topic3-title');
+    const topic3Content = document.getElementById('topic3-content');
+    const topic4Title = document.getElementById('topic4-title');
+    const topic4Content = document.getElementById('topic4-content');
+    const topic5Title = document.getElementById('topic5-title');
+    const topic5Content = document.getElementById('topic5-content');
+
+    // English Content
+    const englishContent = {
+      pageTitle: "Corona Virus Research",
+      backButton: "Back to Home",
+      topic1: {
+        title: "What is Coronavirus?",
+        content: "Coronavirus is a family of viruses that cause illnesses ranging from the common cold to more severe diseases like COVID-19. It was first identified in Wuhan, China, in December 2019."
+      },
+      topic2: {
+        title: "Symptoms",
+        content: "Common symptoms include fever, cough, and shortness of breath. In severe cases, it can lead to pneumonia, kidney failure, and even death."
+      },
+      topic3: {
+        title: "Prevention",
+        content: "To prevent the spread of coronavirus, wash your hands frequently, wear a mask, maintain social distancing, and avoid large gatherings."
+      },
+      topic4: {
+        title: "Vaccines",
+        content: "Vaccines like Pfizer, Moderna, and AstraZeneca have been developed to combat COVID-19. They help build immunity and reduce the severity of the disease."
+      },
+      topic5: {
+        title: "Impact on Society",
+        content: "The pandemic has caused significant disruptions to daily life, including school closures, remote work, and economic challenges."
+      }
+    };
+
+    // Arabic Content
+    const arabicContent = {
+      pageTitle: "بحث عن فيروس كورونا",
+      backButton: "العودة للصفحة الرئيسية",
+      topic1: {
+        title: "ما هو فيروس كورونا؟",
+        content: "فيروس كورونا هو عائلة من الفيروسات التي تسبب أمراضًا تتراوح من نزلات البرد إلى أمراض أكثر خطورة مثل COVID-19. تم تحديده لأول مرة في ووهان، الصين، في ديسمبر 2019."
+      },
+      topic2: {
+        title: "الأعراض",
+        content: "تشمل الأعراض الشائعة الحمى والسعال وضيق التنفس. في الحالات الشديدة، يمكن أن يؤدي إلى الالتهاب الرئوي والفشل الكلوي وحتى الموت."
+      },
+      topic3: {
+        title: "الوقاية",
+        content: "لمنع انتشار فيروس كورونا، اغسل يديك بشكل متكرر، وارتدِ قناعًا، وحافظ على التباعد الاجتماعي، وتجنب التجمعات الكبيرة."
+      },
+      topic4: {
+        title: "اللقاحات",
+        content: "تم تطوير لقاحات مثل فايزر وموديرنا وأسترازينيكا لمكافحة COVID-19. تساعد في بناء المناعة وتقليل شدة المرض."
+      },
+      topic5: {
+        title: "تأثير على المجتمع",
+        content: "لقد تسبب الوباء في اضطرابات كبيرة في الحياة اليومية، بما في ذلك إغلاق المدارس والعمل عن بعد والتحديات الاقتصادية."
+      }
+    };
+
+    let isArabic = false;
+
+    translateBtn.addEventListener('click', () => {
+      if (isArabic) {
+        // Switch to English
+        document.body.dir = "ltr";
+        pageTitle.textContent = englishContent.pageTitle;
+        backButton.textContent = englishContent.backButton;
+        topic1Title.textContent = englishContent.topic1.title;
+        topic1Content.textContent = englishContent.topic1.content;
+        topic2Title.textContent = englishContent.topic2.title;
+        topic2Content.textContent = englishContent.topic2.content;
+        topic3Title.textContent = englishContent.topic3.title;
+        topic3Content.textContent = englishContent.topic3.content;
+        topic4Title.textContent = englishContent.topic4.title;
+        topic4Content.textContent = englishContent.topic4.content;
+        topic5Title.textContent = englishContent.topic5.title;
+        topic5Content.textContent = englishContent.topic5.content;
+      } else {
+        // Switch to Arabic
+        pageTitle.textContent = arabicContent.pageTitle;
+        backButton.textContent = arabicContent.backButton;
+        topic1Title.textContent = arabicContent.topic1.title;
+        topic1Content.textContent = arabicContent.topic1.content;
+        topic2Title.textContent = arabicContent.topic2.title;
+        topic2Content.textContent = arabicContent.topic2.content;
+        topic3Title.textContent = arabicContent.topic3.title;
+        topic3Content.textContent = arabicContent.topic3.content;
+        topic4Title.textContent = arabicContent.topic4.title;
+        topic4Content.textContent = arabicContent.topic4.content;
+        topic5Title.textContent = arabicContent.topic5.title;
+        topic5Content.textContent = arabicContent.topic5.content;
+      }
+      isArabic = !isArabic; // Toggle language
+    });
+  </script>
+</body>
+
+</html>
